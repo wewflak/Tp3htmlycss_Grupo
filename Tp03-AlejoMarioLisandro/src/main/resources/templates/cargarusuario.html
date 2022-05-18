@@ -27,6 +27,19 @@ body{
 #registro .titulo h5{
 	color:#2D2D2D;
 }
+.button{
+	margin-top:1em;
+    margin-left: 70%;
+    width: 30%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    color: #282612;
+    border: #943d24 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 12px;
+    position: relative;
+    }
 </style>
 <meta charset="UTF-8">
 <title>index</title>
@@ -42,11 +55,19 @@ body{
 	 	  		 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
 	 		   <div id="emailHelp" class="form-text"></div>
 		  </div>
+            <div class="mb-3">
+              <label for="validationDefault01" class="form-label">Nombre de Usuario</label>
+              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="validationDefault01" value="" required>
+            </div>
 		  <div class="mb-3" style="display:inline">
 	    		<label for="exampleInputPassword1" class="form-label">Contrasena</label>
 	  			  <input type="password" class="form-control" id="exampleInputPassword1" style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
 	  	  </div>
+	  	  
 	</form >
+	<div class="button">
+	<a href="index">Iniciar</a>
+	</div>
  </div>
 
 </body>
