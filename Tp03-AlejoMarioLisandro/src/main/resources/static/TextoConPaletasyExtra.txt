@@ -1,0 +1,27 @@
+Colores a usar
+
+#e4ddf4 
+#943d24 
+#fffbf0 
+#2d2d2d 
+#282612
+
+Tambien
+
+$bright-yellow-crayola: #ffad25ff;
+$raisin-black: #222327ff;
+$prussian-blue: #033771ff;
+$light-steel-blue: #afbfd9ff;
+$outrageous-orange: #fb7049ff;
+
+
+El usuario entra directamente al registro, pasa a la pagina principal
+Aprieta el boton mi usuario y ve los datos ingresados
+
+Problemas:
+
+No pude acomodar la barra nav para que ocupe toda la pantalla
+No pude conectar cargarusuario con el archivo css
+por lo que escribi el css en el html
+No se como conectar popper como hicimos el bootstrap
+por lo que lo conecte directamente por links

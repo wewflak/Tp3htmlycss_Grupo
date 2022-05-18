@@ -1,0 +1,91 @@
+body{
+	background-color: #f1f1f1;
+}
+.container{
+	padding: 3rem;
+}
+.encabezado{
+	display: block;
+}
+header{
+	padding: 0px;
+	background-color: cyan;
+}
+.menu{
+	display: flex;
+}
+.cuerpo{
+	display: flex;
+}
+body{
+    min-height: 100vh;
+    display: grid;
+    background-color: #FFFBF0;
+    color: #282612;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+/*Css correspondiente al registro de usuario*/
+
+#registro{
+	align-items: center;
+	justify-content: center;
+    width: 60%;
+    margin: 1% 20% 20% 20%;
+    border: #f1f1f1 solid 1px;
+    border-radius: 12px;
+    padding: 1%;
+}
+#registro .titulo h6{
+	color:#943d24;
+	font-style:italic;
+}
+.main #saludo{
+	height:35rem;
+	width: 100%;
+	margin-bottom: 3rem;
+}
+.main #saludo .box-text{
+	background-color: #FFAD25;
+	color:#222327;
+	display: inline-block;
+	padding: 1.5rem;
+	margin: 3rem 1rem 2rem 3rem;
+}
+.main #saludo{
+	background: url(../img/Paisaje-principal.jpeg) center center;
+	background-size: cover;
+}
+.main #center{
+	display:flex;
+	flex-wrap: wrap !important;
+}
+.main #pre-center .titulo{
+	display:block;
+	font-family: 'Hind Siliguri', sans-serif;
+	color:#222327;
+	margin-bottom: .5rem;
+}
+.main #pre-center hr{
+	border:#943d24 .2rem solid;
+}
+.main #center .card{
+	margin: 1.5rem 0 0 1.5rem;
+}
+.main #right{
+	display: flex;
+	flex-wrap: nowrap !important;
+	padding-left: 2rem;
+	border-left: #FB7049 .2rem solid;
+}
+.main #right .cursos-extra .last-one h7{
+	display:flex;
+	margin-bottom:.5rem
+}
+.main #right .cursos-extra .last-one{
+	margin-bottom:2%;
+}
