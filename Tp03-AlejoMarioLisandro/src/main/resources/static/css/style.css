@@ -2,7 +2,7 @@ body{
 	background-color: #f1f1f1;
 }
 .container{
-	padding: 3rem;
+	display: inline-block;
 }
 .encabezado{
 	display: block;
@@ -77,15 +77,34 @@ body{
 	margin: 1.5rem 0 0 1.5rem;
 }
 .main #right{
+	margin-top: 3em;
 	display: flex;
 	flex-wrap: nowrap !important;
 	padding-left: 2rem;
 	border-left: #FB7049 .2rem solid;
 }
-.main #right .cursos-extra .last-one h7{
+.main #right .cursos-extra .last-one span{
 	display:flex;
-	margin-bottom:.5rem
+	margin-bottom:.5rem;
+	font-size:1.5em;
 }
 .main #right .cursos-extra .last-one{
 	margin-bottom:2%;
+}
+.main #right .cursos-extra .last-one hr{
+	margin-bottom:2%;
+	border:#943d24 .2em solid;
+}
+.main #right .cursos-extra .last-one .card{
+	margin-bottom:2.5em;
+	margin-top:1.2em;
+}
+.main #right .cursos-extra .history h7{
+	display:flex;
+	margin-bottom:.5rem;
+	font-size:1.5em;
+}
+.main #right .cursos-extra .history .card{
+		margin-bottom:2.5em;
+	margin-top:1.2em;
 }

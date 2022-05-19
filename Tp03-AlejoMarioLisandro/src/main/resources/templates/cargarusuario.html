@@ -40,30 +40,61 @@ body{
     border-radius: 12px;
     position: relative;
     }
+.button a{
+	text-decoration:none;
+	color:#212121
+}
+.button:hover{
+	background:#943d24;
+	border: #afbfd9ff 0.125em solid;
+}
+.button:hover a{
+		color:#FFFBF0;
+}
 </style>
 <meta charset="UTF-8">
 <title>index</title>
 </head>
 <body>
-<div class="container" id="registro" th:fragment="inicio" style="">
+<div class="container" id="registro" th:fragment="inicio">
 <div class="titulo">
 <h5>Inicio de usuario</h5>
 </div>
 		<form th:object="${usuario}" th:action="@{/guardarusuario}" method="post">
+		
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="nombre" th:field="*{nombre}" value="" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="apellido" th:field="*{apellido}" value="" required>
+            </div>
+            <div class="mb-3">
+              <label for="dni" class="form-label">Dni</label>
+              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="number" class="form-control" id="dni" th:field="*{dni}" value="" required>
+            </div>
+	  	<!--  <div class="alert alert-danger" th:if="${#field.hasError('dni')}"th:errors="*{dni}">
+	  	  </div>-->
 		  <div class="mb-3" style="display:inline">
-	    		<label for="exampleInputEmail1" class="form-label">Email</label>
-	 	  		 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
+	    		<label for="email" class="form-label">Email</label>
+	 	  		 <input type="email" class="form-control" id="email" th:field="*{email}" aria-describedby="emailHelp" style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
 	 		   <div id="emailHelp" class="form-text"></div>
 		  </div>
+		              <div class="mb-3">
+              <label for="fechadeN" class="form-label">Fecha de Nacimiento</label>
+              <input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date" class="form-control" id="fechadeN" th:field="*{fechadeN}" required>
+            </div>
+            
             <div class="mb-3">
-              <label for="validationDefault01" class="form-label">Nombre de Usuario</label>
-              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="validationDefault01" value="" required>
+              <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
+              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="nombreUsuario" th:field="*{nombreUsuario}"  value="" required>
             </div>
 		  <div class="mb-3" style="display:inline">
-	    		<label for="exampleInputPassword1" class="form-label">Contrasena</label>
-	  			  <input type="password" class="form-control" id="exampleInputPassword1" style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
+	    		<label for="contrasena" class="form-label">Contrasena</label>
+	  			  <input type="password" class="form-control" id="contrasena" th:field="*{contrasena}"  style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
 	  	  </div>
-	  	  
 	</form >
 	<div class="button">
 	<a href="index">Iniciar</a>

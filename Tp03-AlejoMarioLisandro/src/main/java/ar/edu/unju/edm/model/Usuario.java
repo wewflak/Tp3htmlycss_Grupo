@@ -1,5 +1,12 @@
 package ar.edu.unju.edm.model;
 
+import java.time.LocalDate;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,12 +16,33 @@ public class Usuario {
 	}
 	private int Id;
 	private String nombre;
+	private String apellido;
+	private String nombreUsuario;
+	private String email;
+	@NotEmpty //Para String
 	private String contrasena;
-	public Usuario(int id, String nombre, String contrasena) {
+	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
+	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
+	@NotNull //Para numeros
+	private Long dni;
+	private LocalDate fechadeN;
+	private Boolean estado;
+	public Usuario(int id, String nombre, String apellido, String nombreUsuario, String contrasena, String email, Long dni, LocalDate fechadeN) {
 		super();
 		Id = id;
 		this.nombre = nombre;
+		this.apellido = apellido;
+		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
+		this.email = email;
+		this.dni = dni;
+		this.fechadeN = fechadeN;
+	}
+	public LocalDate getFechadeN() {
+		return fechadeN;
+	}
+	public void setFechadeN(LocalDate fechadeN) {
+		this.fechadeN = fechadeN;
 	}
 	public int getId() {
 		return Id;
@@ -33,6 +61,36 @@ public class Usuario {
 	}
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+	public Long getDni() {
+		return dni;
+	}
+	public void setDni(Long dni) {
+		this.dni = dni;
 	}
 	
 }
