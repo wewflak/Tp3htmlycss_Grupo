@@ -47,6 +47,7 @@ h2{
 	text-decoration:none;
 }
 .boton:hover{
+	transition:all 0.2s;
 	background:#282612;
 	border: #afbfd9ff 0.125em solid;
 }
@@ -84,7 +85,11 @@ h2{
 		<td th:text="${u.email}"></td>
 		<td th:text="${u.fechadeN}"></td>
 		<td th:text="${u.nombreUsuario}"></td>
-		<td><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a> <a class="btn btn-danger" th:href="@{'/eliminarUsuario/'+${u.dni}}">Eliminar</a></td>
+		<td><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a>
+			 <a class="btn btn-danger" 
+			  th:onclick="'javascript:confirmarEliminar(\''+${u.dni}+'\');'"
+			 >Eliminar</a></td>
+			 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" th:href="@{'/eliminarUsuario/'+${u.dni}}"-->
     </tr>
   </tbody>
 </table>
@@ -92,5 +97,40 @@ h2{
       <a href="index">Volver al Inicio</a>
     </div>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
+<script th:src="@{/webjars/jqeury.js/1.16.0/jequery.min.js}"
+type="text/javascript" src="webjars/jquery.js/1.16.0/jquery.min.js">
+</script>
+<!--<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
+type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
+</script>-->
+<script type="text/javascript">
+ 	function confirmarEliminar(dni){
+	$('#modalEliminar').modal('show');
+	$("#identificadorDeUsuario").val(dni);
+}
+function eliminarUsuario(){
+	var id=$("identificadordeUsuario").val;
+	window.location="/eliminarUsuario/" + id;
+}
+</script>
 </html>
