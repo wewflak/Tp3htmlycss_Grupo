@@ -7,6 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,6 +26,7 @@ public class Usuario {
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull //Para numeros
 	private Long dni;
+	@DateTimeFormat(pattern = "mm-dd-yyyy")
 	private LocalDate fechadeN;
 	private Boolean estado;
 	public Usuario(int id, String nombre, String apellido, String nombreUsuario, String contrasena, String email, Long dni, LocalDate fechadeN) {

@@ -44,8 +44,14 @@ h2{
 	margin-left:2rem;
 	color:#282612;
 	font-size:1.2rem;
-	background-color:#e4ddf4;
 	text-decoration:none;
+}
+.boton:hover{
+	background:#282612;
+	border: #afbfd9ff 0.125em solid;
+}
+.boton:hover a{
+		color:#FFFBF0;
 }
 </style>
 <title>***Listado de Usuarios***</title>
@@ -60,15 +66,29 @@ h2{
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">DNI</th>
       <th scope="col">Email</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Nombre de Usuario</th>
+      <th scope="col">Contrasena</th>
     </tr>
   </thead>
   <tbody>
-    <tr th:each="cli:${listadoUsuarios}">
-      <th scope="row">1</th>
-		<th th:text="${cli.nombre}"></th>
-		<th th:text="${cli.nombre}"></th>
+  <tr th:if=${listausuarios.empty}>
+ 	<td colspan="3"> No hay Usuarios Cargados </td>
+  </tr>
+    <tr th:each="u : ${listausuarios}">
+		<td th:text="${u.nombre}"></td>
+		<td th:text="${u.apellido}"></td>
+		<td th:text="${u.dni}"></td>
+		<td th:text="${u.email}"></td>
+		<td th:text="${u.fechadeN}"></td>
+		<td th:text="${u.nombreUsuario}"></td>
+		<td>><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a> <a class="btn btn-danger" th:href="@{'/eliminarUsuario/'+${u.dni}}">>Eliminar</td>
     </tr>
+  </tbody>
+</table>
     <div class="boton">
       <a href="index">Volver al Inicio</a>
     </div>
