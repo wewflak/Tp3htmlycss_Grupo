@@ -16,8 +16,11 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	private int Id;
+	@NotEmpty
 	private String nombre;
+	@NotEmpty
 	private String apellido;
+	@NotEmpty
 	private String nombreUsuario;
 	private String email;
 	@NotEmpty //Para String
@@ -26,7 +29,7 @@ public class Usuario {
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull //Para numeros
 	private Long dni;
-	@DateTimeFormat(pattern = "mm-dd-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechadeN;
 	private Boolean estado;
 	public Usuario(int id, String nombre, String apellido, String nombreUsuario, String contrasena, String email, Long dni, LocalDate fechadeN) {

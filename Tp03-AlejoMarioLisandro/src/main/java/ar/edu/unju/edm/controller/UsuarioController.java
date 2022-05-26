@@ -46,6 +46,7 @@ public class UsuarioController {
 		}else {
 		lista.getListado().add(usuarioparaguardar);
 		SRT.error("Tamaño listado: " + lista.getListado().size()); 
+		System.out.println(usuarioparaguardar.getApellido()+usuarioparaguardar.getEmail());
 		return "redirect:/cargarusuario";
 	}
 	}
@@ -65,6 +66,7 @@ public class UsuarioController {
 		}
 		ModelAndView encontrado = new ModelAndView("cargarusuario");
 		encontrado.addObject("usuario", usuarioEncontrado);
+		encontrado.addObject("band", "true");
 		return encontrado;
 	}
 	@PostMapping("ModificarUsuario")

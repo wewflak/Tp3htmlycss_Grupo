@@ -64,14 +64,13 @@ h2{
 <table class="table" id="tabla">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">DNI</th>
       <th scope="col">Email</th>
       <th scope="col">Fecha de Nacimiento</th>
       <th scope="col">Nombre de Usuario</th>
-      <th scope="col">Contrasena</th>
+      <th scope="col">Editar</th>
     </tr>
   </thead>
   <tbody>
@@ -85,7 +84,7 @@ h2{
 		<td th:text="${u.email}"></td>
 		<td th:text="${u.fechadeN}"></td>
 		<td th:text="${u.nombreUsuario}"></td>
-		<td>><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a> <a class="btn btn-danger" th:href="@{'/eliminarUsuario/'+${u.dni}}">>Eliminar</td>
+		<td><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a> <a class="btn btn-danger" th:href="@{'/eliminarUsuario/'+${u.dni}}">Eliminar</a></td>
     </tr>
   </tbody>
 </table>
