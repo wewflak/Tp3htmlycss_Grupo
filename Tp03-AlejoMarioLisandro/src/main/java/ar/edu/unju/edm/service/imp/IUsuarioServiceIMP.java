@@ -24,12 +24,11 @@ public class IUsuarioServiceIMP implements IUsuarioService {
 	public List<Usuario> mostrarUsuarios() {
 		// TODO Auto-generated method stub
 		List<Usuario> activos = new ArrayList<>();
-		for(int i=0; i<= lista.getListado().size(); i++) {
+		for(int i=0; i< lista.getListado().size(); i++) {
 			if(lista.getListado().get(i).getEstado()==true) {
 				activos.add(lista.getListado().get(i));
 				
 			}else {
-				return null;
 			}
 	}	return activos;
 	}

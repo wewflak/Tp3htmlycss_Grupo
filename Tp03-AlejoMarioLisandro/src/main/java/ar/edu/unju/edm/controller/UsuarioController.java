@@ -59,7 +59,9 @@ public class UsuarioController {
 	@GetMapping("/mostrarusuario")
 	public ModelAndView showuser() {
 		ModelAndView vista = new ModelAndView("mostrarusuario");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		vista.addObject("listausuarios", serviceuser.mostrarUsuarios());
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
 //	@GetMapping("/editarUsuario/{dni}")
