@@ -40,18 +40,21 @@ h2{
 	border-bottom:#AFBFD9FF .2em solid;
 	
 }
-.contenedor .boton a{
+.contenedor  .boton span{
 	margin-left:2rem;
 	color:#282612;
 	font-size:1.2rem;
 	text-decoration:none;
 }
-.boton:hover{
-	transition:all 0.2s;
+a{
+	text-decoration:none;
+}
+a .boton:hover{
+	transition:all 0.5s;
 	background:#282612;
 	border: #afbfd9ff 0.125em solid;
 }
-.boton:hover a{
+a .boton:hover span{
 		color:#FFFBF0;
 }
 </style>
@@ -93,9 +96,11 @@ h2{
     </tr>
   </tbody>
 </table>
+<a href="index">
     <div class="boton">
-      <a href="index">Volver al Inicio</a>
+      <span>Volver al Inicio</span>
     </div>
+    </a>
     </div>
 
 <!-- Modal -->
@@ -103,33 +108,34 @@ h2{
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminar</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         ...
+        <input type="text" id="identificadorDeUsuario" class="form-control"> 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" th:onclick="eliminarUsuario(())">Eliminar</button>
       </div>
     </div>
   </div>
 </div>
 </body>
-<script th:src="@{/webjars/jqeury.js/1.16.0/jequery.min.js}"
-type="text/javascript" src="webjars/jquery.js/1.16.0/jquery.min.js">
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js">
 </script>
-<!--<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
 type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
-</script>-->
+</script>
 <script type="text/javascript">
  	function confirmarEliminar(dni){
 	$('#modalEliminar').modal('show');
 	$("#identificadorDeUsuario").val(dni);
 }
 function eliminarUsuario(){
-	var id=$("identificadordeUsuario").val;
+	var id=$("identificadordeUsuario").val();
 	window.location="/eliminarUsuario/" + id;
 }
 </script>
