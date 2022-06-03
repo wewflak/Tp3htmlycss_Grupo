@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Usuario;
+import ar.edu.unju.edm.repository.UsuarioRepository;
 import ar.edu.unju.edm.service.IUsuarioService;
 import ar.edu.unju.edm.util.ListadoUsuarios;
 @Service
 public class IUsuarioServiceIMP implements IUsuarioService {
 	@Autowired
+	UsuarioRepository usuariorepository;
+	@Autowired
+
 	ListadoUsuarios lista;
 	@Override
 	public void guardarUsuario(Usuario usuarioparaguardar) {
@@ -39,17 +43,17 @@ public class IUsuarioServiceIMP implements IUsuarioService {
 		Usuario auxiliar = new Usuario();
 		auxiliar = buscarUsuario(dni);
 		auxiliar.setEstado(false);
-		
 	}
 
-	@Override
-	public void modificarUsuario(Usuario user) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+////	public void modificarUsuario(Usuario user, Long dni) {
+////		// TODO Auto-generated method stub
+////		Usuario auxiliar = new Usuario();
+////		auxiliar = buscarUsuario(dni);
+////	}
 
 	@Override
-	public Usuario buscarUsuario(long dni) {
+	public Usuario buscarUsuario(Long dni) {
 		// TODO Auto-generated method stub
 		Usuario auxiliar = new Usuario();
 		for(int i=0; i<= lista.getListado().size(); i++) {
@@ -61,5 +65,6 @@ public class IUsuarioServiceIMP implements IUsuarioService {
 			}
 	}	return auxiliar;
 	}
+	
 
 }

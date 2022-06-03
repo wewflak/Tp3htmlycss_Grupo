@@ -15,7 +15,7 @@ public interface IUsuarioService {
 	//Elminar Usuario
 	public void eliminarUsuario(Long dni);
 	//Modifica los datos del usuario
-	public void modificarUsuario(Usuario user);
+//	public void modificarUsuario(Usuario user, Long dni);
 	//Busca usuarios
-	public Usuario buscarUsuario(long dni);
+	public Usuario buscarUsuario(Long dni);
 }
