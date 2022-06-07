@@ -2,8 +2,6 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
 <head>
 <!--<link th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +63,7 @@ a .boton:hover span{
 <body>
 <h2>Usuarios registrados</h2>
 <div class="contenedor">
+<div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
@@ -78,9 +77,6 @@ a .boton:hover span{
     </tr>
   </thead>
   <tbody>
-  <tr th:if=${listausuarios.empty}>
- 	<td colspan="3"> No hay Usuarios Cargados </td>
-  </tr>
     <tr th:each="u : ${listausuarios}">
 		<td th:text="${u.nombre}"></td>
 		<td th:text="${u.apellido}"></td>
@@ -105,19 +101,19 @@ a .boton:hover span{
 
 <!-- Modal -->
 <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document"> 
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminar</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-        <input type="text" id="identificadorDeUsuario" class="form-control"> 
+        ¿Seguro quiere eliminar este Usuario?
+        <input type="text" id="identificadorDeUsuario" class="form-control" name="userIdHiddenInput"> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" th:onclick="eliminarUsuario(())">Eliminar</button>
+        <button type="button" class="btn btn-primary" th:onclick="eliminarUsuario()">Eliminar</button>
       </div>
     </div>
   </div>
@@ -129,6 +125,28 @@ type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js">
 <script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
 type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
 </script>
+
+	<script type="text/javascript">
+		var exampleModal = document.getElementById('modalEliminar')
+		exampleModal.addEventListener('show.bs.modal', function(event) {
+			// Button that triggered the modal
+			var button = event.relatedTarget
+			// Extract info from data-bs-* attributes
+			var recipient = button.getAttribute('data-bs-mail')
+			var recipient2 = button.getAttribute('data-bs-whatever')
+			// If necessary, you could initiate an AJAX request here
+			// and then do the updating in a callback.
+			//
+			// Update the modal's content.
+			var modalTitle = exampleModal.querySelector('.modal-title')
+			var modalBodyInput = exampleModal
+					.querySelector('.modal-body input')
+
+			modalTitle.textContent = 'Eliminar Usuario ' + recipient
+			modalBodyInput.value = recipient2
+		})
+	</script>
+
 <script type="text/javascript">
  	function confirmarEliminar(dni){
 	$('#modalEliminar').modal('show');

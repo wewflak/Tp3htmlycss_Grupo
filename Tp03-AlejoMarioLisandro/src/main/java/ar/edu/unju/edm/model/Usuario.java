@@ -35,7 +35,6 @@ public class Usuario {
 	private String contrasena;
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
-	@Id
 	@NotNull //Para numeros
 	@Id
 	//@GeneratedValue(strategy=GenerationType.IDENTITY)

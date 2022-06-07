@@ -63,6 +63,9 @@ body{
 </div>
 		<form th:object="${usuario}" th:action="${band}? @{/ModificarUsuario} : @{/guardarusuario}" method="post">
 		
+			      <input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
+	      <input type="hidden" class="form-control" th:if="${band}" th:field="*{estado}">
+	      <input type="hidden" class="form-control" th:if="${band}" th:field="*{dni}">
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
               <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="nombre" th:field="*{nombre}" value="" required>
@@ -76,8 +79,11 @@ body{
             </div>
             <div class="mb-3">
               <label for="dni" class="form-label">Dni</label>
-              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="number" class="form-control" id="dni" th:field="*{dni}" value="" required>
-        <div class="alert alert-danger" th:if="${#fields.hasErrors('dni')}"th:errors="*{dni}"></div>
+              <input 
+              th:if="${band==false}"
+              style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="number" class="form-control" id="dni" th:field="*{dni}" value="" required>
+        <div class="alert alert-danger" 
+        th:if="${#fields.hasErrors('dni')}"th:errors="*{dni}"></div>
             </div>
 	  	
 		  <div class="mb-3" style="display:inline">
@@ -99,7 +105,8 @@ body{
             </div>
 		  <div class="mb-3" style="display:inline">
 	    		<label for="contrasena" class="form-label">Contrasena</label>
-	  			<input type="password" class="form-control" id="contrasena" th:field="*{contrasena}"  style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
+	  			<input type="password"
+	  			th:if="${band==false}" class="form-control" id="contrasena" th:field="*{contrasena}"  style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
 	  	          <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
 	  	  </div>
 	  	  
