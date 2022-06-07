@@ -31,7 +31,7 @@ public class UsuarioController {
 		ModelAndView vista = new ModelAndView("cargarusuario");
 		vista.addObject("usuario", nuevoUsuario);
 
-		vista.addObject("band", "false");
+		vista.addObject("band", false);
 		return vista;
 		
 	}
@@ -49,10 +49,15 @@ public class UsuarioController {
 			serviceuser.guardarUsuario(usuarioparaguardar);
 			}
 		catch(Exception error){
+			model.addAttribute("formUsuarioErrorMessage", error.getMessage());
+			model.addAttribute("usuario", usuarioparaguardar); 
 			SRT.error("No se pudo cargar"); 
+			return "cargarusuario";
 		}
+		model.addAttribute("formUsuarioErrorMessage", "Usuario guardado correctamente");
+		
 		System.out.println(usuarioparaguardar.getApellido()+usuarioparaguardar.getEmail());
-		return "redirect:/cargarusuario";
+		return "cargarusuario";
 	}
 	}
 	
@@ -64,46 +69,38 @@ public class UsuarioController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-//	@GetMapping("/editarUsuario/{dni}")
-//	public ModelAndView edituser(@PathVariable(name="dni")Long dni) {
-//		Usuario usuarioEncontrado = new Usuario();
-//		for(int i=0; i<=lista.getListado().size(); i++) {
-//			if(lista.getListado().get(i).getDni().equals(dni)) {
-//				usuarioEncontrado = lista.getListado().get(i);
-//			}
-//		}
-//		ModelAndView encontrado = new ModelAndView("cargarusuario");
-//		encontrado.addObject("usuario", usuarioEncontrado);
-//		encontrado.addObject("band", "true");
-//		return encontrado;
-//	}
-//	@PostMapping("ModificarUsuario")
-//	public String subUser(@Valid @ModelAttribute ("Usuario") Usuario usuariomodificar, BindingResult resultado, Model model) {
-//		SRT.info("Ingresando al metodo guardar Usuario: "+usuariomodificar.getApellido());
-//		if(resultado.hasErrors()) {
-//			SRT.fatal("Error de validacion");
-//			model.addAttribute("usuario", usuariomodificar);
-//			return "cargarusuario";
-//		}else {
-//			for(int i=0; i<=lista.getListado().size(); i++) {
-//				if(lista.getListado().get(i).getDni().equals(usuariomodificar.getDni())) {
-//				lista.getListado().set(i, usuariomodificar);
-//				}
-//			}
-//		lista.getListado().add(usuariomodificar);
-//		SRT.error("Tamaño listado: " + lista.getListado().size());
-//		
-//		return "redirect:/mostrarusuario";
-//	}
-//	}
+	@GetMapping("/editarUsuario/{dni}")
+	public ModelAndView edituser(Model model, @PathVariable(name="dni")Long dni) throws Exception {
+		Usuario usuarioEncontrado = new Usuario();
+		try {
+			usuarioEncontrado = serviceuser.buscarUsuario(dni);
+		}catch(Exception e) {
+			model.addAttribute("formUsuarioErrorMessage", e.getMessage());
+		}
+		ModelAndView encontrado = new ModelAndView("cargarusuario");
+		encontrado.addObject("usuario", usuarioEncontrado);
+		SRT.error("usuario: " + usuarioEncontrado);
+		encontrado.addObject("band", true);
+		return encontrado;
+	}
+	@PostMapping("ModificarUsuario")
+	public ModelAndView subUser(@Valid @ModelAttribute ("Usuario") Usuario usuariomodificar, Model model) {
+		serviceuser.modificarUsuario(usuariomodificar);
+		SRT.info("Ingresando al metodo guardar Usuario: "+usuariomodificar.getApellido());
+		ModelAndView vista = new ModelAndView ("mostrarusuario");
+		vista.addObject("listaUsuario", serviceuser.mostrarUsuarios());
+		vista.addObject("formUsuarioErrorMessage", "Usuario guardado correctamente");
+		return vista;
+	}
 	@GetMapping("/eliminarUsuario/{dni}")
 	public String deleteuser(@PathVariable(name="dni")Long dni) {
 		try {
 		serviceuser.eliminarUsuario(dni);
 		}catch(Exception error){
 			SRT.error("No se pudo eliminar el usuario");
+			return "redirect:/cargarusuario";
 		}
-		return "redirect:/mostrarusuarios";
+		return "redirect:/mostrarusuario";
 	}
 	
 	}

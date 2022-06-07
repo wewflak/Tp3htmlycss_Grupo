@@ -2,6 +2,8 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -11,7 +13,29 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
 public class Curso {
+	//agregado
+  
+   private String docente;
+   private Integer duracion;
+   private String descripcion;
+   private Integer cupo;
+   private double costo;
+   private Integer valoracion;
+   ///
+	private String mail;
+	private String contrasena;
+	@NotEmpty
+	private String nombre;
+	@Max (value = 99999999, message="DNI debe ser menor que 99999999")
+	@Min(value = 1000000, message="DNI debe ser mayor que 1000000")
+	@Id
+	private Integer dni;
+	private Boolean estado;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	  private LocalDate fechaInicio;
+	  private LocalDate fechaFinal;
 	public Curso() {
 		// TODO Auto-generated constructor stub
 	}
