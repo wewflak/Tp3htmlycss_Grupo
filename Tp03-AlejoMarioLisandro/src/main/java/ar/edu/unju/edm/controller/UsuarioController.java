@@ -105,6 +105,7 @@ public class UsuarioController {
 		}
 		return "redirect:/mostrarusuarios";
 	}
+	
 	}
 //	@PostMapping("descartarUsuario")
 //	public String descUser(@Valid @ModelAttribute ("Usuario") Usuario usuarioeliminar, BindingResult resultado, Model model) {
