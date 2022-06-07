@@ -30,10 +30,12 @@ public class Usuario {
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull //Para numeros
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long dni;
+	private Boolean estado;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechadeN;
-	private Boolean estado;
 	public Usuario(String nombre, String apellido, String nombreUsuario, String contrasena, String email, Long dni, LocalDate fechadeN) {
 		super();
 		this.nombre = nombre;

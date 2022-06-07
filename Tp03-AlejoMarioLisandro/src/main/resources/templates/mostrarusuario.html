@@ -148,13 +148,14 @@ type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
 	</script>
 
 <script type="text/javascript">
- 	function confirmarEliminar(dni){
-	$('#modalEliminar').modal('show');
-	$("#identificadorDeUsuario").val(dni);
-}
-function eliminarUsuario(){
-	var id=$("identificadordeUsuario").val();
-	window.location="/eliminarUsuario/" + id;
-}
+	function confirmarEliminar(dni){
+		$('#modalEliminar').modal('show');
+		$("#identificadorDeUsuario").val(dni);
+	}
+
+	function eliminarUsuario(){
+		var id=$("#identificadorDeUsuario").val();
+		window.location="/eliminarUsuario/"+ id;
+	}
 </script>
 </html>
