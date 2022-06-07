@@ -3,7 +3,7 @@
 <body>
  <div class="container" id="header" th:fragment="header" style="display: inline;">
 		<header class="encabezado">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e4ddf4;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index">
                 <img src="img/logo.svg" style="height: 5rem; overflow: hidden;" alt="">
@@ -29,15 +29,14 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Opciones
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #e4ddf4;">
                     <li><a class="dropdown-item" href="#center">Cursos disponibles</a></li>
                     <li><a class="dropdown-item" href="#right">Ultimos cursos</a></li>
                 </ul>
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="height:5vh; display: flex; align-items: center;">
-                <button class="btn btn-outline-success" type="submit" style=" color: #212121; border-radius: 12px; border: #212121 solid 1px;" onmouseover="this.style.backgroundColor='#212121'; this.style.color='#f1f1f1'" onmouseout="this.style.backgroundColor='#f1f1f1'; this.style.color='#212121'">Search</button>
+
             </form>
             </div>
         </div>
