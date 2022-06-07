@@ -13,9 +13,9 @@ public interface IUsuarioService {
 	//Muestra usuarios
 	public List<Usuario> mostrarUsuarios();
 	//Elminar Usuario
-	public void eliminarUsuario(Long dni);
+	public void eliminarUsuario(Long dni) throws Exception;
 	//Modifica los datos del usuario
 	public void modificarUsuario(Usuario user);
 	//Busca usuarios
-	public Usuario buscarUsuario(long dni);
+	public Usuario buscarUsuario(Long dni) throws Exception;
 }

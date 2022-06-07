@@ -5,18 +5,20 @@ import java.time.LocalDate;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
-
+@Entity
 @Component
 public class Usuario {
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
-	private int Id;
 	@NotEmpty
+	@Size (min=5, max=30, message="El nombre de contener entre 5 a 30 caracteres")
 	private String nombre;
 	@NotEmpty
 	private String apellido;
@@ -27,14 +29,14 @@ public class Usuario {
 	private String contrasena;
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
+	@Id
 	@NotNull //Para numeros
 	private Long dni;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechadeN;
 	private Boolean estado;
-	public Usuario(int id, String nombre, String apellido, String nombreUsuario, String contrasena, String email, Long dni, LocalDate fechadeN) {
+	public Usuario(String nombre, String apellido, String nombreUsuario, String contrasena, String email, Long dni, LocalDate fechadeN) {
 		super();
-		Id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nombreUsuario = nombreUsuario;
@@ -48,12 +50,6 @@ public class Usuario {
 	}
 	public void setFechadeN(LocalDate fechadeN) {
 		this.fechadeN = fechadeN;
-	}
-	public int getId() {
-		return Id;
-	}
-	public void setId(int id) {
-		Id = id;
 	}
 	public String getNombre() {
 		return nombre;
