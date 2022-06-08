@@ -74,6 +74,7 @@ a .boton:hover span{
       <th scope="col">Fecha de Nacimiento</th>
       <th scope="col">Nombre de Usuario</th>
       <th scope="col">Editar</th>
+	  <th scope="col">Eliminar</th>
     </tr>
   </thead>
   <tbody>
@@ -84,8 +85,9 @@ a .boton:hover span{
 		<td th:text="${u.email}"></td>
 		<td th:text="${u.fechadeN}"></td>
 		<td th:text="${u.nombreUsuario}"></td>
-		<td><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a>
-			 <a class="btn btn-danger" 
+		<td><a class="btn btn-warning" th:href="@{'/editarUsuario/'+${u.dni}}"> Editar </a></td>
+		
+		<td>	 <a class="btn btn-danger" 
 			  th:onclick="'javascript:confirmarEliminar(\''+${u.dni}+'\');'"
 			 >Eliminar</a></td>
 			 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" th:href="@{'/eliminarUsuario/'+${u.dni}}"-->

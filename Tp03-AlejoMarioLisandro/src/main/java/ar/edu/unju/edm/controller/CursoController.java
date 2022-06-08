@@ -21,101 +21,89 @@ import ar.edu.unju.edm.service.ICursoService;
 
 @Controller
 public class CursoController {
-private static final Log GUSTAVO = LogFactory.getLog(CursoController.class);
+private static final Log SRT = LogFactory.getLog(CursoController.class);
 
 @Autowired
-Curso nuevoUsuario;
+Curso nuevoCurso;
 
 @Autowired
-ICursoService usuarioService;
+ICursoService servicecourse;
 	
-@GetMapping("/nuevoCurso")
+@GetMapping("/usuarios")
 public ModelAndView addUser() {
-	GUSTAVO.info("ingresando al metodo: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-	ModelAndView modelView = new ModelAndView("usuarios");
-	//modelView.addObject("index");
-	modelView.addObject("unUsuario", nuevoUsuario);
-	modelView.addObject("editMode",false);
-	//modelView.addObject("formUsuarioErrorMessage","HOLA");
-	
-	return modelView;
-}
+	ModelAndView vista = new ModelAndView("usuarios");
+	vista.addObject("unCurso", nuevoCurso);
 
+	vista.addObject("editMode", false);
+	return vista;
+}
 //diferenciar Valid y Validated
 @PostMapping("/guardarCurso")
-public String saveUser(@Valid @ModelAttribute("unUsuario") Curso usuarioNuevo, BindingResult resultado, ModelMap model) {			
+public String saveUser(@Valid @ModelAttribute("unCurso") Curso cursoNuevo, BindingResult resultado, Model model) {			
 		// VERIFICACION DEL NOMBRE Y DNI	
 	if (resultado.hasErrors()) {
-		GUSTAVO.fatal("ERROR DE VALIDACION");			
-		model.addAttribute("unUsuario", usuarioNuevo);			
+		SRT.fatal("ERROR DE VALIDACION");			
+		model.addAttribute("unCurso", cursoNuevo);			
 		return "usuarios";
 	}		
 	try {
-		usuarioService.guardarCurso(usuarioNuevo);
+			servicecourse.guardarCurso(cursoNuevo);
 	} catch (Exception e) {			
-		model.addAttribute("formUsuarioErrorMessage", e.getMessage());
-		model.addAttribute("unUsuario", usuarioNuevo);
-		GUSTAVO.error("saliendo del metodo: eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+		SRT.error("Error al cargar curso");
+		model.addAttribute("formCursoErrorMessage", e.getMessage());
+		model.addAttribute("unCurso", cursoNuevo);
+		SRT.error("No se pudo guardar el curso");
 		return "usuarios";		
 	}		
-	
-	model.addAttribute("formUsuarioErrorMessage", "Usuario guardado correctamente");
-	model.addAttribute("unUsuario", nuevoUsuario);			
+			
 	return "usuarios";
 	}
 
-@GetMapping("/listadoCurso")	
+@GetMapping("/getUsers")	
 // opcion 1
 public ModelAndView showUser() {
 	ModelAndView vista = new ModelAndView("getUsers");		
-	vista.addObject("listadoCursos", usuarioService.listarCursos());	
-	GUSTAVO.info("ingresando al metodo: cvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"+usuarioService.listarCursos().get(0).getNombre());
+	vista.addObject("listadoCursos", servicecourse.listarCursos());	
+	SRT.info("ingresando al metodo: cvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
 	return vista;
 }
 
 @GetMapping("/eliminarCurso/{id}")
-public String eliminar(@PathVariable Integer id, Model model) {	
+public String eliminar(@PathVariable Long id, Model model) {	
 	try {
-	usuarioService.eliminarCurso(id);
-	}catch(Exception e) {
-		GUSTAVO.error("encontrando: eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-		model.addAttribute("formUsuarioErrorMessage", e.getMessage());
-		return "redirect:/nuevoUsuario";			
+	servicecourse.eliminarCurso(id);
+	}catch(Exception error){
+		SRT.error("No se pudo eliminar el usuario");
+		return "redirect:/usuarios";
 	}
-	return "redirect:/listadoCurso";
+	return "redirect:/getUsers";
 }
 
 @GetMapping("/editarCurso/{dni}")
-public ModelAndView ObtenerFormularioEditarUsuario(Model model, @PathVariable(name="dni") Integer dni) throws Exception {
+public ModelAndView ObtenerFormularioEditarUsuario(Model model, @PathVariable(name="id") Long id) throws Exception {
 	//buscar usuario en el listado
-	Curso usuarioEncontrado = new Curso();
-	usuarioEncontrado = usuarioService.buscarCurso(dni);	
-	ModelAndView modelView = new ModelAndView("usuarios");
-	modelView.addObject("unUsuario", usuarioEncontrado);
-	GUSTAVO.error("saliendo del metodo: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+ usuarioEncontrado.getDni());
-	modelView.addObject("editMode",true);		
-	return modelView;
+	Curso cursoEncontrado = new Curso();
+	try {
+		cursoEncontrado = servicecourse.buscarCurso(id);
+	}catch(Exception e) {
+		model.addAttribute("formUsuarioErrorMessage", e.getMessage());
+	}
+	ModelAndView encontrado = new ModelAndView("cargarusuario");
+	encontrado.addObject("usuario", cursoEncontrado);
+	SRT.error("usuario: " + cursoEncontrado);
+	encontrado.addObject("editMode", true);
+	return encontrado;
 }
 
 
 
-@PostMapping("/editarCurso")
-public ModelAndView postEditarUsuario(@ModelAttribute("usuarioF") Curso usuarioModificado) {		
-			
-			//model.addAttribute("usuarioF", usuario);
-			//model.addAttribute("editMode", "false");
-		//} catch (Exception e) {
-		//	model.addAttribute("formUsuarioErrorMessage", e.getMessage());
-		//	model.addAttribute("userForm", usuario);
-		//	model.addAttribute("editMode", "true");
-		//}
-	//}
-
-	//model.addAttribute("usuarios", usuarioService.listarUsuario());
-	usuarioService.modificarCurso(usuarioModificado);
-	ModelAndView vista = new ModelAndView("getUsers");		
-	vista.addObject("listadoCursos", usuarioService.listarCursos());	
-	vista.addObject("formUsuarioErrorMessage","Usuario Guardado Correctamente");
+@PostMapping("ModificarCurso")
+public ModelAndView subUser(@Valid @ModelAttribute ("unCurso") Curso cursomodificar, Model model) {
+	servicecourse.modificarCurso(cursomodificar);
+	SRT.info("Ingresando al metodo guardar Usuario: "+cursomodificar.getNombre());
+	ModelAndView vista = new ModelAndView ("mostrarusuario");
+	vista.addObject("listaUsuario", servicecourse.listarCursos());
+	vista.addObject("formUsuarioErrorMessage", "Usuario guardado correctamente");
 	return vista;
 }
 }

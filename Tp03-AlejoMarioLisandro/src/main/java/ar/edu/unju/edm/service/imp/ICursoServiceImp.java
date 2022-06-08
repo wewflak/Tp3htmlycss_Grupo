@@ -3,85 +3,68 @@ package ar.edu.unju.edm.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import ar.edu.unju.edm.controller.CursoController;
 import ar.edu.unju.edm.model.Curso;
+import ar.edu.unju.edm.repository.CursoRepository;
 import ar.edu.unju.edm.service.ICursoService;
 import ar.edu.unju.edm.util.ListaCursos;
 
 @Service
 public class ICursoServiceImp implements ICursoService{
 
-	private static final Log GUSTAVO = LogFactory.getLog(CursoController.class);
-	
 	@Autowired
 	ListaCursos lista;
-	
+	@Autowired
+	CursoRepository cursoRepository;
 	@Override
-	public void guardarCurso(Curso usuario) {
+	public void guardarCurso(Curso cursoparaguardar) {
 		// TODO Auto-generated method stub
-		usuario.setEstado(true);
-		lista.getListed().add(usuario);
+		cursoparaguardar.setEstado(true);
+		cursoRepository.save(cursoparaguardar);
 	}
 
 	@Override
-	public void eliminarCurso(Integer id) {
+	public void eliminarCurso(Long id) throws Exception {
 		// TODO Auto-generated method stub		
-		for (int i = 0; i < lista.getListed().size(); i++) {			
-			if (lista.getListed().get(i).getDni().equals(id)) {				
-				lista.getListed().get(i).setEstado(false);		
-			}            
-        }		
+		Curso auxiliar = new Curso();
+		auxiliar = buscarCurso(id);
+		auxiliar.setEstado(false);
+		cursoRepository.save(auxiliar);
 	}
 
 	@Override
-	public void modificarCurso(Curso usuario) {
+	public void modificarCurso(Curso Curso) {
 		// TODO Auto-generated method stub
 		
 		//usuario.setEstado(true);
-		for (int i = 0; i < lista.getListed().size(); i++) {			
-			if (lista.getListed().get(i).getDni().equals(usuario.getDni())) {
-				GUSTAVO.error("encontrando: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-				lista.getListed().set(i, usuario);			
-			}            
-        }
+
+		Curso.setEstado(true);
+		cursoRepository.save(Curso);
 	}
 
 	@Override
 	public List<Curso> listarCursos() {
 		// TODO Auto-generated method stub
-		List<Curso> auxiliar = new ArrayList<>();
-		GUSTAVO.info("ingresando al metodo: iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-		for (int i = 0; i < lista.getListed().size(); i++) {
-			GUSTAVO.error("recorriendo: oooooooooooooooooooooooooooo"+lista.getListed().get(i).getDni());
-			
-			if (lista.getListed().get(i).getEstado()==true) {
-				//GUSTAVO.error("encontrando: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-				auxiliar.add(lista.getListed().get(i));		
-			}            
-        }
-		return auxiliar;
+		List<Curso> activos = new ArrayList<>();
+		List<Curso> activos2 = new ArrayList<>();
+		activos=(List<Curso>) cursoRepository.findAll();
+			for(int i=0; i< activos.size(); i++) {
+				if(activos.get(i).getEstado()==true){
+					activos2.add(activos.get(i));			
+				}
+		}
+		return activos2;
 	}
 
 	
 
 	@Override
-	public Curso buscarCurso(Integer id) {
+	public Curso buscarCurso(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		Curso usuarioEncontrado = new Curso();
-		for (int i = 0; i < lista.getListed().size(); i++) {
-//			GUSTAVO.error("recorriendo: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+dni);
-			
-			if (lista.getListed().get(i).getDni().equals(id)) {
-				//GUSTAVO.error("encontrando: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-				usuarioEncontrado = lista.getListed().get(i);		
-			}            
-        }
-		return usuarioEncontrado;
+		Curso cursoEncontrado = new Curso();
+		cursoEncontrado=cursoRepository.findById(id).orElseThrow(()->new Exception("Curso No encontrado"));
+		return cursoEncontrado;
 	}
 
 }

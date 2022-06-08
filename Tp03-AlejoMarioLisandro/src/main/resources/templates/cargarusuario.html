@@ -44,10 +44,16 @@ body{
 	text-decoration:none;
 	color:#212121
 }
+a{
+	
+	text-decoration:none;
+	color:#212121
+}
 .button:hover{
 	background:#943d24;
 	border: #afbfd9ff 0.125em solid;
 	transition:all 0.2s;
+	color:#FFFBF0;
 }
 .button:hover a{
 		color:#FFFBF0;
@@ -63,7 +69,7 @@ body{
 </div>
 		<form th:object="${usuario}" th:action="${band}? @{/ModificarUsuario} : @{/guardarusuario}" method="post">
 		
-			      <input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
+		<input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
 	      <input type="hidden" class="form-control" th:if="${band}" th:field="*{estado}">
 	      <input type="hidden" class="form-control" th:if="${band}" th:field="*{dni}">
             <div class="mb-3">
@@ -74,14 +80,14 @@ body{
             
             <div class="mb-3">
               <label for="apellido" class="form-label">Apellido</label>
-              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="apellido" th:field="*{apellido}" value="" required>
+              <input style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('apellido')}"th:errors="*{apellido}"></div>
             </div>
             <div class="mb-3">
-              <label for="dni" class="form-label">Dni</label>
+              <label for="dni" class="form-label" th:if="${band==false}">Dni</label>
               <input 
               th:if="${band==false}"
-              style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="number" class="form-control" id="dni" th:field="*{dni}" value="" required>
+              style="display:block; width:90%; color: #212121; border: solid 1px #943d24; border-radius: 12px;" type="number" class="form-control" id="dni" th:field="*{dni}" required>
         <div class="alert alert-danger" 
         th:if="${#fields.hasErrors('dni')}"th:errors="*{dni}"></div>
             </div>
@@ -104,20 +110,14 @@ body{
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('nombreUsuario')}"th:errors="*{nombreUsuario}"></div>
             </div>
 		  <div class="mb-3" style="display:inline">
-	    		<label for="contrasena" class="form-label">Contrasena</label>
+	    		<label for="contrasena" class="form-label" th:if="${band==false}">Contrasena</label>
 	  			<input type="password"
 	  			th:if="${band==false}" class="form-control" id="contrasena" th:field="*{contrasena}"  style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" required>
 	  	          <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
 	  	  </div>
 	  	  
-	<button type="submit" class="button" th:value="${band}? 'Modificar' : 'Registrarse'">
-	Guardar
-	</button>
-	<a th:href="index">
-	<button class="button">
-	Iniciar
-	</button>
-	</a>
+<button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button>
+		  <a class="button" th:href="@{/}">Volver</a>
 	</form >
  </div>
  <script type="text/javascript">  

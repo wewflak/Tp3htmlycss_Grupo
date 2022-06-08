@@ -104,24 +104,4 @@ public class UsuarioController {
 	}
 	
 	}
-//	@PostMapping("descartarUsuario")
-//	public String descUser(@Valid @ModelAttribute ("Usuario") Usuario usuarioeliminar, BindingResult resultado, Model model) {
-//		SRT.info("Ingresando al metodo guardar Usuario: "+usuarioeliminar.getApellido());
-//		if(resultado.hasErrors()) {
-//			SRT.fatal("Error de validacion");
-//			model.addAttribute("usuario", usuarioeliminar);
-//			return "cargarusuario";
-//		}else {
-//			for(int i=0; i<=lista.getListado().size(); i++) {
-//				if(lista.getListado().get(i).getDni().equals(usuarioeliminar.getDni())) {
-//				lista.getListado().set(i, usuarioeliminar);
-//				}
-//			}
-//		lista.getListado().add(usuarioeliminar);
-//		SRT.error("Tamaño listado: " + lista.getListado().size());
-//		
-//		return "redirect:/mostrarusuario";
-//	}
-//}
-//}
-//	
+
