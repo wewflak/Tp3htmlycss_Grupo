@@ -21,7 +21,7 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	@NotEmpty
-	@Size (min=5, max=30, message="El nombre de contener entre 5 a 30 caracteres")
+	@Size (min=4, max=30, message="El nombre de contener entre 4 a 30 caracteres")
 	private String nombre;
 	@NotEmpty
 	private String apellido;
