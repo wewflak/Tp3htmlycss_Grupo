@@ -13,12 +13,9 @@ import ar.edu.unju.edm.util.ListadoUsuarios;
 @Service
 public class IUsuarioServiceIMP implements IUsuarioService {
 	@Autowired
-<<<<<<< Updated upstream
-=======
 	UsuarioRepository usuarioRepository;
 	@Autowired
 
->>>>>>> Stashed changes
 	ListadoUsuarios lista;
 	
 	@Override
