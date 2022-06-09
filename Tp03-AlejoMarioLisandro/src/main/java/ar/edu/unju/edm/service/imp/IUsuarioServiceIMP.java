@@ -13,19 +13,18 @@ import ar.edu.unju.edm.util.ListadoUsuarios;
 @Service
 public class IUsuarioServiceIMP implements IUsuarioService {
 	@Autowired
-	UsuarioRepository usuariorepository;
+<<<<<<< Updated upstream
+=======
+	UsuarioRepository usuarioRepository;
 	@Autowired
 
+>>>>>>> Stashed changes
 	ListadoUsuarios lista;
-	
-	@Autowired
-	UsuarioRepository usuarioRepository;
 	
 	@Override
 	public void guardarUsuario(Usuario usuarioparaguardar) {
 		// TODO Auto-generated method stub
 		usuarioparaguardar.setEstado(true);
-		//lista.getListado().add(usuarioparaguardar);
 		usuarioRepository.save(usuarioparaguardar);
 	}
 
@@ -73,6 +72,6 @@ public class IUsuarioServiceIMP implements IUsuarioService {
 		usuarioencontrado=usuarioRepository.findById(dni).orElseThrow(()->new Exception("Usuario No encontrado"));
 		return usuarioencontrado;
 	}
-	
 
 }
+

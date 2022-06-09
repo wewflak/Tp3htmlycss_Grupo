@@ -42,7 +42,7 @@ public ModelAndView addUser() {
 public String saveUser(@Valid @ModelAttribute("unCurso") Curso cursoNuevo, BindingResult resultado, Model model) {			
 		// VERIFICACION DEL NOMBRE Y DNI	
 	if (resultado.hasErrors()) {
-		SRT.fatal("ERROR DE VALIDACION");			
+		SRT.fatal("ERROR DE VALIDACION" + cursoNuevo.getId());			
 		model.addAttribute("unCurso", cursoNuevo);			
 		return "usuarios";
 	}		
@@ -55,7 +55,9 @@ public String saveUser(@Valid @ModelAttribute("unCurso") Curso cursoNuevo, Bindi
 		SRT.error("No se pudo guardar el curso");
 		return "usuarios";		
 	}		
-			
+	model.addAttribute("formCursoErrorMessage", "Curso guardado correctamente");
+	model.addAttribute("unCurso", nuevoCurso);
+	SRT.fatal(cursoNuevo.getId());
 	return "usuarios";
 	}
 
