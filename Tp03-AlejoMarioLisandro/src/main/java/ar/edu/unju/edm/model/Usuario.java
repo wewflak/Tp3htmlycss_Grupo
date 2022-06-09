@@ -35,7 +35,6 @@ public class Usuario {
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull //Para numeros
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long dni;
 	private Boolean estado;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
