@@ -13,16 +13,18 @@ import ar.edu.unju.edm.util.ListadoUsuarios;
 @Service
 public class IUsuarioServiceIMP implements IUsuarioService {
 	@Autowired
-	ListadoUsuarios lista;
-	
-	@Autowired
+<<<<<<< Updated upstream
+=======
 	UsuarioRepository usuarioRepository;
+	@Autowired
+
+>>>>>>> Stashed changes
+	ListadoUsuarios lista;
 	
 	@Override
 	public void guardarUsuario(Usuario usuarioparaguardar) {
 		// TODO Auto-generated method stub
 		usuarioparaguardar.setEstado(true);
-		//lista.getListado().add(usuarioparaguardar);
 		usuarioRepository.save(usuarioparaguardar);
 	}
 
@@ -72,3 +74,4 @@ public class IUsuarioServiceIMP implements IUsuarioService {
 	}
 
 }
+

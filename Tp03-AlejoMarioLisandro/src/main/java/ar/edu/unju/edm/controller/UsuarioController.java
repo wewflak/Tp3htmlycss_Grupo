@@ -55,7 +55,7 @@ public class UsuarioController {
 			return "cargarusuario";
 		}
 		model.addAttribute("formUsuarioErrorMessage", "Usuario guardado correctamente");
-		
+		model.addAttribute("usuario", nuevoUsuario);
 		System.out.println(usuarioparaguardar.getApellido()+usuarioparaguardar.getEmail());
 		return "cargarusuario";
 	}
