@@ -51,13 +51,13 @@
     
        <div class="mb-3">
               	<label for="fechaInicio" class="form-label">Fecha de inicio</label>
-              	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechaInicio" th:field="*{fechaInicio}" required>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('fechaInicio')}"th:errors="*{fechaInicio}"></div>
+              	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechadeI" th:field="*{fechadeI}" required>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('fechadeI')}"th:errors="*{fechadeI}"></div>
             </div>
                    <div class="mb-3">
               	<label for="fechaFinal" class="form-label">Fecha de finalizacion</label>
-              	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechaFinal" th:field="*{fechaFinal}" required>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('fechaFinal')}"th:errors="*{fechaFinal}"></div>
+              	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechadeF" th:field="*{fechadeF}" required>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('fechadeF')}"th:errors="*{fechadeF}"></div>
             </div>
   <div class="mb-3">
     <label for="cupo" class="form-label">Duracion </label>
