@@ -25,6 +25,7 @@ public class UsuarioCurso {
 	@JoinColumn(name="id")
 	private Curso curso;
 	private LocalDate fechaDeInscripcion;
+	private Boolean Estado;
 	
 	public UsuarioCurso() {
 		// TODO Auto-generated constructor stub
@@ -53,6 +54,14 @@ public class UsuarioCurso {
 	}
 	public void setFechaDeInscripcion(LocalDate fechaDeInscripcion) {
 		this.fechaDeInscripcion = fechaDeInscripcion;
+	}
+
+	public Boolean getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		Estado = estado;
 	}
 	
 }

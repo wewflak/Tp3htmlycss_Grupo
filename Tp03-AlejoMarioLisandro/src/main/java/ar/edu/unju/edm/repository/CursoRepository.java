@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import ar.edu.unju.edm.model.Curso;
 
-public interface CursoRepository extends CrudRepository<Curso,Long>{
+public interface CursoRepository extends CrudRepository<Curso,Integer>{
 	
 }

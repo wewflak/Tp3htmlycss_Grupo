@@ -25,7 +25,7 @@ public class ICursoServiceImp implements ICursoService{
 	}
 
 	@Override
-	public void eliminarCurso(Long id) throws Exception {
+	public void eliminarCurso(Integer id) throws Exception {
 		// TODO Auto-generated method stub		
 		Curso auxiliar = new Curso();
 		auxiliar = buscarCurso(id);
@@ -60,7 +60,7 @@ public class ICursoServiceImp implements ICursoService{
 	
 
 	@Override
-	public Curso buscarCurso(Long id) throws Exception {
+	public Curso buscarCurso(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		Curso cursoEncontrado = new Curso();
 		cursoEncontrado=cursoRepository.findById(id).orElseThrow(()->new Exception("Curso No encontrado"));

@@ -55,7 +55,7 @@
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('fechaInicio')}"th:errors="*{fechaInicio}"></div>
             </div>
                    <div class="mb-3">
-              	<label for="fechaFinal" class="form-label">Fecha de inicio</label>
+              	<label for="fechaFinal" class="form-label">Fecha de finalizacion</label>
               	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechaFinal" th:field="*{fechaFinal}" required>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('fechaFinal')}"th:errors="*{fechaFinal}"></div>
             </div>
@@ -79,11 +79,6 @@
     <label for="docente" class="form-label">Docente</label>
     <input type="text" class="form-control" id="docente" th:field="*{docente}">
     <div class="alert alert-danger" th:if="${#fields.hasErrors('docente')}" th:errors="*{docente}">Error</div>
-  </div>
-  <div class="mb-3">
-    <label for="id" class="form-label">Id</label>
-    <input type="number" class="form-control" id="id" th:field="*{id}">
-    <div class="alert alert-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Error</div>
   </div>
   <div>
   <button type="submit" class="btn btn-primary" ><span th:text="${editMode}?'Modificar':'Guardar'"></span>  </button>
