@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	
 	<body>
 		<div class="main" id="main"  th:fragment="main">
 		<div class="col-12" id="saludo">
@@ -9,61 +13,74 @@
 			</div>
 		</div>
 		<div class="align-items-start"><div id="pre-center" class="col-8">
-					<div class="titulo"> 
+					<div class="titulo">
 			<h5>Cursos</h5>
 			</div>
 			<hr>
 			</div>
 		</div>
 			<div class="container">
-				<div class=" align-self-start"><div id="center" class="col-8">
+				<div class=" align-self-start"><div id="center" class="col-12">
 	
 					<div class="card" style="width: 18rem;">
-					  <img src="..." class="card-img-top" alt="...">
+					  <img src="/img/java.png" class="card-img-top" alt="...">
 					  <div class="card-body">
-					    <h5 class="card-title">Card title</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					    <h5 class="card-title"><b>Java</b></h5>
+					    <p class="card-text">Iníciate desde cero en el lenguaje mejor remunerado del sector de IT. 
+					    Con Java, desarrollarás aplicaciones versátiles, efectivas y ligeras.</p>
+					    <a href="#" class="btn btn-primary">Ir a Curso</a>
 					  </div>
 					</div>
 					<div class="card" style="width: 18rem;">
-						  <img src="..." class="card-img-top" alt="...">
+						  <img src="/img/javasc.png" class="card-img-top" alt="...">
 						  <div class="card-body">
-						    <h5 class="card-title">Card title</h5>
-						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    <a href="#" class="btn btn-primary">Ir al curso</a>
+						    <h5 class="card-title"><b>JavaScript</b></h5>
+						    <p class="card-text">Iníciate en el mundo de la programación, con el lenguaje más versátil y demandado del mercado. 
+						    Prepárate para dominar el desarrollo de aplicaciones web y Mobile.</p>
+						    <a href="#" class="btn btn-primary">Ir a curso</a>
 						  </div>
 					</div>
 									<div class="card" style="width: 18rem;">
-					  <img src="..." class="card-img-top" alt="...">
+					  <img src="/img/c++logo.png" class="card-img-top" alt="...">
 					  <div class="card-body">
-					    <h5 class="card-title">Card title</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					    <h5 class="card-title"><b>C++</b></h5>
+					    <p class="card-text">Aprenderas la sintaxis, la lógica necesaria para programar,
+					     desarrollaras tu logica para resolver problemas y tendrás muy buenos conceptos de estructuras de datos.
+					    </p>
+					    <a href="#" class="btn btn-primary">Ir a curso</a>
 					  </div>
 					</div>
 									<div class="card" style="width: 18rem;">
-					  <img src="..." class="card-img-top" alt="...">
+					  <img src="/img/php.png" class="card-img-top" alt="...">
 					  <div class="card-body">
-					    <h5 class="card-title">Card title</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					    <h5 class="card-title"><b>PHP</b></h5>
+					    <p class="card-text">Desarrolla soluciones web con PHP, extremadamente popular usa 
+					    en más del 75% de todos los sitios web donde se conoce el lenguaje de programación del lado del servidor.
+					    </p>
+					    <a href="#" class="btn btn-primary">Ir a curso</a>
 					  </div>
 					</div>
 									<div class="card" style="width: 18rem;">
-					  <img src="..." class="card-img-top" alt="...">
+					  <img src="/img/pythonlog.png" class="card-img-top" alt="...">
 					  <div class="card-body">
-					    <h5 class="card-title">Card title</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					    <h5 class="card-title"><b>Python</b></h5>
+					    <p class="card-text">Aprenderás todo lo que necesitas saber sobre el lenguaje, 
+					    desde la teoría hasta ejercicios prácticos. Con una estructura y metodología sencilla, 
+					    fácil y práctica, podrás potenciar los conocimientos que ya tienes.
+
+					    </p>
+					    <a href="#" class="btn btn-primary">Ir a curso</a>
 					  </div>
 					</div>
 									<div class="card" style="width: 18rem;">
-					  <img src="..." class="card-img-top" alt="...">
+					  <img src="/img/androidm.png" class="card-img-top" alt="...">
 					  <div class="card-body">
-					    <h5 class="card-title">Card title</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					    <h5 class="card-title"><b>Android</b></h5>
+					    <p class="card-text">Puedes crear una variedad de apps, desde Hello World hasta otras que 
+					    programan trabajos, actualizan opciones de configuración y usan componentes de 
+					    la arquitectura de Android.
+					    </p>
+					    <a href="#" class="btn btn-primary">Ir a curso</a>
 					  </div>
 					</div>
 				</div>
@@ -76,11 +93,12 @@
 							<span>Ultimo curso visitado</span>
 							<hr>
 									<div class="card" style="width: 18rem;">
-								  <img src="..." class="card-img-top" alt="...">
+								  <img src="/img/c++logo.png" class="card-img-top" alt="...">
 								  <div class="card-body">
-								    <h5 class="card-title">Card title</h5>
-								    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								    <a href="#" class="btn btn-primary">Go somewhere</a>
+								    <h5 class="card-title"><b>C++</b></h5>
+								    <p class="card-text">Aprenderas la sintaxis, la lógica necesaria para programar,
+					     desarrollaras tu logica para resolver problemas y tendrás muy buenos conceptos de estructuras de datos.</p>
+								    <a href="#" class="btn btn-primary">Ir a Curso</a>
 								  </div>
 								</div>
 						</div>
@@ -91,9 +109,9 @@
 								    Featured
 								  </div>
 								  <ul class="list-group list-group-flush">
-								    <li class="list-group-item">An item</li>
-								    <li class="list-group-item">A second item</li>
-								    <li class="list-group-item">A third item</li>
+								    <li class="list-group-item">Curso de Java</li>
+								    <li class="list-group-item">Curso de JavaScript</li>
+								    <li class="list-group-item">Curso de C++</li>
 								  </ul>
 								</div> 
 						</div>

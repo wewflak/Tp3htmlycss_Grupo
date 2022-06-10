@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/miEstilo.css}" rel="stylesheet" type="text/css" href="/static/css/miEstilo.css">
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+
+<div class= "container">
+<div class="alert alert-success alert-dismissible fade show row" role="alert" th:if="${formUsuarioErrorMessage}" >
+	<label th:text="${formUsuarioErrorMessage}"></label>  
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div></div>
+<div class="row">
+
+<article class="col-3"> 
+	<form th:object="${unCurso}" th:action="${editMode}?@{/ModificarCurso}:@{/guardarCurso}"	 method="post">
+	<input type="hidden" class="form-control"  th:if="${editMode}" th:field="*{contrasena}">
+	<input type="hidden" class="form-control"  th:if="${editMode}" th:field="*{estado}">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{mail}">
+  </div>
+  
+  <div class="mb-3" th:if="${editMode == false}">
+    <label for="exampleInputPassword1" class="form-label">Contrasena</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" th:field="*{contrasena}">
+  </div>
+  
+    <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</div>
+  </div>
+  
+    <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripcion</label>
+    <input type="text" class="form-control" id="descripcion" th:field="*{descripcion}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Error</div>
+  </div>
+  
+   <div class="mb-3">
+    <label for="valoracion" class="form-label">Valoracion</label>
+    <input type="number" class="form-control" id="valoracion" th:field="*{valoracion}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('valoracion')}" th:errors="*{valoracion}">Error</div>
+  </div>
+  
+    
+       <div class="mb-3">
+              	<label for="fechaInicio" class="form-label">Fecha de inicio</label>
+              	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechaInicio" th:field="*{fechaInicio}" required>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('fechaInicio')}"th:errors="*{fechaInicio}"></div>
+            </div>
+                   <div class="mb-3">
+              	<label for="fechaFinal" class="form-label">Fecha de inicio</label>
+              	<input style="display:block; width:90%; color: #212121; border-radius: 12px; border: solid #943d24 1px;" type="date"  class="date form-control" id="fechaFinal" th:field="*{fechaFinal}" required>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('fechaFinal')}"th:errors="*{fechaFinal}"></div>
+            </div>
+  <div class="mb-3">
+    <label for="cupo" class="form-label">Duracion </label>
+    <input type="number" class="form-control" id="duracion" th:field="*{duracion}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('duracion')}" th:errors="*{duracion}">Error</div>
+  </div>
+  <div class="mb-3">
+    <label for="cupo" class="form-label">Cupos </label>
+    <input type="number" class="form-control" id="cupo" th:field="*{cupo}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('cupo')}" th:errors="*{cupo}">Error</div>
+  </div>
+  
+  <div class="mb-3">
+    <label for="costo" class="form-label">Costo</label>
+    <input type="number" class="form-control" id="costo" th:field="*{costo}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('costo')}" th:errors="*{costo}">Error</div>
+  </div>
+  <div class="mb-3">
+    <label for="docente" class="form-label">Docente</label>
+    <input type="text" class="form-control" id="docente" th:field="*{docente}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('docente')}" th:errors="*{docente}">Error</div>
+  </div>
+  <div class="mb-3">
+    <label for="id" class="form-label">Id</label>
+    <input type="number" class="form-control" id="id" th:field="*{id}">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Error</div>
+  </div>
+  <div>
+  <button type="submit" class="btn btn-primary" ><span th:text="${editMode}?'Modificar':'Guardar'"></span>  </button>
+  <a class="btn btn-light" th:href="index">Volver</a>
+  </div>
+  
+</form> </article>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
+		type="text/javascript"
+		src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
