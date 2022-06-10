@@ -31,9 +31,14 @@ public class Curso {
 	@Max (value = 99999999, message="DNI debe ser menor que 99999999")
 	@Min(value = 1000000, message="DNI debe ser mayor que 1000000")
 	@Id
+<<<<<<< Updated upstream
 	private Integer dni;
+=======
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+>>>>>>> Stashed changes
 	private Boolean estado;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd") //dd/MM/yyyy
 	  private LocalDate fechaInicio;
 	  private LocalDate fechaFinal;
 	public Curso() {
@@ -104,6 +109,7 @@ public class Curso {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+<<<<<<< Updated upstream
 	public String getApellido() {
 		return apellido;
 	}
@@ -115,6 +121,14 @@ public class Curso {
 	}
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
+=======
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+>>>>>>> Stashed changes
 	}
 	public Boolean getEstado() {
 		return estado;

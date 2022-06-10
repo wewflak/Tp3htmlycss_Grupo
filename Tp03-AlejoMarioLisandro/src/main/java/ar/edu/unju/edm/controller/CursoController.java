@@ -71,7 +71,7 @@ public ModelAndView showUser() {
 }
 
 @GetMapping("/eliminarCurso/{id}")
-public String eliminar(@PathVariable Long id, Model model) {	
+public String eliminar(@PathVariable Integer id, Model model) {	
 	try {
 	servicecourse.eliminarCurso(id);
 	}catch(Exception error){
@@ -82,7 +82,7 @@ public String eliminar(@PathVariable Long id, Model model) {
 }
 
 @GetMapping("/editarCurso/{dni}")
-public ModelAndView ObtenerFormularioEditarUsuario(Model model, @PathVariable(name="id") Long id) throws Exception {
+public ModelAndView ObtenerFormularioEditarUsuario(Model model, @PathVariable(name="id") Integer id) throws Exception {
 	//buscar usuario en el listado
 	Curso cursoEncontrado = new Curso();
 	try {
